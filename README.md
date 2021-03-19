@@ -1,2 +1,2 @@
 # speml
-SPEML WS 20/21
+SPEML SS 21
