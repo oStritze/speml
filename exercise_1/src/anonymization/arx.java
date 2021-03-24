@@ -32,7 +32,7 @@ public class arx {
                 data.getDefinition().setAttributeType(cols[i], hierarchy);
             }
 
-        Integer[] ks = new Integer[]{1,2,3,5};
+        Integer[] ks = new Integer[]{1,2,3,5,10};
 
         for (int i = 0; i < ks.length; i++) {
             int k = ks[i];
