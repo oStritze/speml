@@ -1,6 +1,10 @@
 # MACOS
 .DS_Store
 .vscode
+.idea
+
+# java
+*.jar
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
