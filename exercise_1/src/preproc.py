@@ -1,8 +1,9 @@
 
+import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import MinMaxScaler
 
-def preproc(data, onehot_encoder=None, scaler=None):
+def preproc(data, onehot_encoder=None, scaler=None, numeric=None, categorical=None):
     this_data = data.copy()
     this_data.dropna(inplace=True) # drop all lines with missing values
     this_data.reset_index(inplace=True, drop=True)
@@ -11,7 +12,12 @@ def preproc(data, onehot_encoder=None, scaler=None):
     this_data.drop(columns=drops, axis=1, inplace=True)
 
     # numericals to scale
-    to_scale = ["age", "fnlwgt", "capital-gain", "capital-loss", "hours-per-week"]
+    if numeric is None:
+        to_scale = ["age", "fnlwgt", "capital-gain", "capital-loss", "hours-per-week"]
+    else:
+        to_scale = numeric
+        if "education-num" in to_scale:
+            to_scale.remove("education-num")
 
     if not scaler:
         this_scaler = MinMaxScaler()
@@ -20,8 +26,11 @@ def preproc(data, onehot_encoder=None, scaler=None):
         this_scaler = scaler 
     this_data[to_scale] = this_scaler.transform(this_data[to_scale])
 
-    # categorical columns to drop
-    onehot = ["workclass", "education", "marital-status", "occupation", "relationship", "race", "sex", "native-country"]
+    # categorical columns to encode
+    if categorical is None:
+        onehot = ["workclass", "education", "marital-status", "occupation", "relationship", "race", "sex", "native-country"]
+    else:
+        onehot = categorical
 
     # in case no encoder is provided we create one which can then be re-used (train-test split)
     if not onehot_encoder:
