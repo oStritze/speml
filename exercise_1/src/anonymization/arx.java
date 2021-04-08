@@ -25,15 +25,14 @@ public class arx {
 
             for (int i = 0; i < cols.length; i++) {
                 data.getDefinition().setAttributeType(cols[i], AttributeType.QUASI_IDENTIFYING_ATTRIBUTE);
-                String hierPath = "exercise_1/data/hierarchy/adult_hierarchy_"+cols[i]+".csv";
+                String hierPath = "exercise_1/data/anonymization/hierarchy/adult_hierarchy_"+cols[i]+".csv";
                 AttributeType.Hierarchy hierarchy = AttributeType.Hierarchy.create(hierPath,
                         Charset.defaultCharset(),
                         ';');
                 data.getDefinition().setAttributeType(cols[i], hierarchy);
             }
 
-        Integer[] ks = new Integer[]{1,2,3,5,10};
-
+        Integer[] ks = new Integer[]{1,5,10,25,50,75,100};
         for (int i = 0; i < ks.length; i++) {
             int k = ks[i];
             System.out.println("Doing k-Anonymity with k: "+k+" ...");
@@ -46,7 +45,7 @@ public class arx {
 
             ARXResult result = anonymizer.anonymize(data, config);
             DataHandle handle = result.getOutput();
-            String out = "exercise_1/data/k-anonymity/anonymized_k"+k+".data";
+            String out = "exercise_1/data/anonymization/k-anonymity/anonymized_k"+k+".data";
             handle.save(out, ',');
             handle.release();
             data.getHandle().release();
