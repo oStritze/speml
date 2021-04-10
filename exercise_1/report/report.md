@@ -1,7 +1,7 @@
 # Exercise 1 - Anonymisation
 Group 7 - Oliver Stritzel - Dejana Stevanovic
 
-The code can be found in the public [repository](https://github.com/oStritze/speml)
+Code can be found in the public [repository](https://github.com/oStritze/speml).
 
 ## Dataset
 As a dataset we used the adults dataset from the [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/Adult). The dataset consits of a target variable, the income, which is denoted as higher or lower than 50.000\$ per year income. 
