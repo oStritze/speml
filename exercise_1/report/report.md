@@ -1,11 +1,12 @@
 # Exercise 1 - Anonymisation
 Group 7 - Oliver Stritzel - Dejana Stevanovic
 
+The code can be found in the public [repository](https://github.com/oStritze/speml)
+
 ## Dataset
 As a dataset we used the adults dataset from the [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/Adult). The dataset consits of a target variable, the income, which is denoted as higher or lower than 50.000\$ per year income. 
 The dataset includes 14 variables, consisting of categorical and numerical values, with over 32000 rows. 
 
-The whole code used to achieve the results can be found in the public [repository](https://github.com/oStritze/speml)
 ## Pre-Processing and General Classifier
 We pre-processed the dataset, one-hot encoding categorical features, dropping some redundant ones (f.i. *education-num*). Rows with missing values were dropped. After pre-processing, we split the data into train and test (80/20) and trained three baseline classifiers on it (SVM-Classifier, Random-Forest, Gaussian-Naive Bayes). This was done without any anonymization. As metrics we used *f1-score* and *roc-auc score*. This results were achieved:
 
